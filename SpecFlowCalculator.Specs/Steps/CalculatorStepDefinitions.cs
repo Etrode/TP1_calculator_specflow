@@ -44,6 +44,17 @@ namespace SpecFlowCalculator.Specs.Steps
             _result = _calculator.Sub();
         }
 
+        [When(@"the two numbers are multiplied")]
+        public void WhenTheTwoNumbersAreMultiplied()
+        {
+            _result = _calculator.Multiply();
+        }
+
+        [When(@"the two numbers are divided")]
+        public void WhenTheTwoNumbersAreDivided()
+        {
+            _result = _calculator.Divide();
+        }
 
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int result)

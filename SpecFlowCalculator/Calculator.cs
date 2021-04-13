@@ -16,5 +16,23 @@ namespace SpecFlowCalculator
         {
             return FirstNumber - SecondNumber;
         }
+
+        public int Multiply()
+        {
+            return FirstNumber * SecondNumber;
+        }
+
+        public int Divide()
+        {
+            try
+            {
+                return FirstNumber / SecondNumber;
+            }
+            catch (DivideByZeroException)
+            {
+                return 0;
+            }
+        }
+
     }
 }
