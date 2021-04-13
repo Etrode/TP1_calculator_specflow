@@ -79,11 +79,11 @@ Link to a feature: [Calculator](SpecFlowCalculator.Specs/Features/Calculator.fea
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Add two numbers", new string[] {
-                "mytag"}, SourceLine=8)]
+                "Addition"}, SourceLine=8)]
         public virtual void AddTwoNumbers()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "Addition"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 9
@@ -117,6 +117,50 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 13
  testRunner.Then("the result should be 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Subtract two numbers", new string[] {
+                "Substraction"}, SourceLine=15)]
+        public virtual void SubtractTwoNumbers()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "Substraction"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtract two numbers", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 16
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 17
+    testRunner.Given("the first number is 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 18
+    testRunner.And("the second number is 70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 19
+    testRunner.When("the two numbers are subtracted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+    testRunner.Then("the result should be 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
