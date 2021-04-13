@@ -1,5 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 using FluentAssertions;
+using System.Collections.Generic;
 
 namespace SpecFlowCalculator.Specs.Steps
 {
@@ -20,38 +21,38 @@ namespace SpecFlowCalculator.Specs.Steps
             _scenarioContext = scenarioContext;
         }
 
-        [Given("the first number is (.*)")]
-        public void GivenTheFirstNumberIs(int number)
+        [Given(@"the following numbers")]
+        public void GivenTheFollowingNumbers(Table table)
         {
-            _calculator.FirstNumber = number;
+            List<int> _inputsNumbers = new List<int>();
+            foreach(TableRow row in table.Rows)
+            {
+                int value = int.Parse(row[0]);
+                _inputsNumbers.Add(value);
+            }
+            _calculator.InputsNumbers = _inputsNumbers;
         }
 
-        [Given("the second number is (.*)")]
-        public void GivenTheSecondNumberIs(int number)
-        {
-            _calculator.SecondNumber = number;
-        }
-
-        [When("the two numbers are added")]
-        public void WhenTheTwoNumbersAreAdded()
+        [When(@"the numbers are added")]
+        public void WhenTheNumbersAreAdded()
         {
             _result = _calculator.Add();
         }
 
-        [When(@"the two numbers are subtracted")]
-        public void WhenTheTwoNumbersAreSubtracted()
+        [When(@"the numbers are subtracted")]
+        public void WhenTheNumbersAreSubtracted()
         {
             _result = _calculator.Sub();
         }
 
-        [When(@"the two numbers are multiplied")]
-        public void WhenTheTwoNumbersAreMultiplied()
+        [When(@"the numbers are multiplied")]
+        public void WhenTheNumbersAreMultiplied()
         {
             _result = _calculator.Multiply();
         }
 
-        [When(@"the two numbers are divided")]
-        public void WhenTheTwoNumbersAreDivided()
+        [When(@"the numbers are divided")]
+        public void WhenTheNumbersAreDivided()
         {
             _result = _calculator.Divide();
         }
