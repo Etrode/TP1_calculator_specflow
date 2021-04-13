@@ -24,13 +24,13 @@ namespace SpecFlowCalculator.Specs.Steps
         [Given(@"the following numbers")]
         public void GivenTheFollowingNumbers(Table table)
         {
-            List<int> _inputsNumbers = new List<int>();
+            List<int> inputsNumbers = new List<int>();
             foreach(TableRow row in table.Rows)
             {
                 int value = int.Parse(row[0]);
-                _inputsNumbers.Add(value);
+                inputsNumbers.Add(value);
             }
-            _calculator.InputsNumbers = _inputsNumbers;
+            _calculator.InputsNumbers = inputsNumbers;
         }
 
         [When(@"the numbers are added")]
@@ -56,6 +56,35 @@ namespace SpecFlowCalculator.Specs.Steps
         {
             _result = _calculator.Divide();
         }
+
+        [Given(@"the following numbers and operators")]
+        public void GivenTheFollowingNumbersAndOperators(Table table)
+        {
+            List<int> inputsNumbers = new List<int>();
+            List<string> operators = new List<string>();
+            bool first = true;
+            foreach (TableRow row in table.Rows)
+            {
+                int value = int.Parse(row[0]);
+                inputsNumbers.Add(value);
+
+                if (first) { first = false; }
+                else
+                {
+                    string operat = row[1];
+                    operators.Add(operat);
+                }
+            }
+            _calculator.InputsNumbers = inputsNumbers;
+            _calculator.Operators = operators;
+        }
+
+        [When(@"the numbers are calculated")]
+        public void WhenTheNumbersAreCalculated()
+        {
+            _result = _calculator.Calculate();
+        }
+
 
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int result)

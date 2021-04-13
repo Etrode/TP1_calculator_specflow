@@ -44,3 +44,16 @@ Scenario: Divide N numbers
     | 2       |
 	When the numbers are divided
 	Then the result should be 15
+
+@bonus
+# Calculation of numbers with several possible operators.
+# The first number is without operator.
+# Each number inserted afterwards must have an operator.
+Scenario: Calculation N numbers
+	Given the following numbers and operators
+    | Numbers | Operators |
+    | 90      |           |
+    | -3      |     +     |
+    | 2       |     -     |
+	When the numbers are calculated
+	Then the result should be 85
